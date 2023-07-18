@@ -1,0 +1,29 @@
+# .tcshrc
+
+# User specific aliases and functions
+
+#alias rm 'rm -i'
+#alias cp 'cp -i'
+#alias mv 'mv -i'
+alias grep    grep --color=auto
+alias l.      ls -d .\* --color=auto
+alias ll      ls -l --color=auto
+alias ls      ls --color=auto
+#alias ml      module ml !*
+
+set savehist=(100 merge)
+set prompt='[%n@%m %c]% '
+
+set path = (~/bin $path /usr/lib64/mesa)
+
+if (! $?DISPLAY) then       
+   echo "environment variable DISPLAY is undefined"
+  exit
+else
+  if ("$DISPLAY" == "")  then
+      echo "environment variable DISPLAY is empty"
+  else 
+      echo "environment variable DISPLAY contains $DISPLAY"
+      xhost +
+  endif
+endif
